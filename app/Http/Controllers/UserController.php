@@ -99,7 +99,7 @@ class UserController extends Controller
 
         $user = User::find($id);
 
-        $user = delete();
+        $user->delete();
 
         return redirect()->route('AdminGetUserList')->with('message', 'Client sters cu succes!');
     } 
