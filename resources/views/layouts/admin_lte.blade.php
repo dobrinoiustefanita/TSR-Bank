@@ -287,7 +287,12 @@
         <ul class="sidebar-menu tree" data-widget="tree">
           <li class="header">HEADER</li>
           <!-- Optionally, you can add icons to the links -->
-          <li><a href="{{route('show-edit-user')}}"><i class="fa fa-user"></i> <span>Profil</span></a></li>
+          
+          <li> 
+            <a href="{{ URL::route('EditClients') }}"><i class="fa fa-link"></i>
+            <span>Profil</span>
+            </a>
+          </li>
           <li><a href="#"><i class="fa fa-file-text-o"></i> <span>Transaction History</span></a></li>
           <li><a href="#"><i class="fa fa-usd"></i><span>Check Balance</span></a></li>
 
@@ -311,6 +316,7 @@
               <li><a href="#">Choose Spend Limit</a></li>
             </ul>
           </li>
+          <li><a href="{{route('show-edit-user')}}"><i class="fa fa-user"></i> <span>Change Password</span></a></li>
           <li>
             <a id="side-menu-log-out" href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-long-arrow-left"></i>
               <span>Log Out</span>

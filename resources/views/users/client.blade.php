@@ -10,17 +10,7 @@
               <a href="{{ route('AdminGetUserList')}}"><h3 class="box-title">Clienti</h3></a>
             </div>
             <!-- /.box-header -->
-            {{-- <form action="search" method="POST" role="search">
-                {{ csrf_field() }}
-                <div class="input-group">
-                    <input type="text" class="form-control" name="search_client"
-                        placeholder="Search users"> <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
-                </div>
-            </form> --}}
+            
             <div class="box-body">
                 <table class="table table-bordered table-hover">
                     <thead>

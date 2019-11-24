@@ -4,24 +4,7 @@
 
 <div class="tab-content">
     <div class="tab-pane active">
-        <div class="box-header">
-            <h3 class="box-title">Edit Profile</h3>
-        </div>
-        <form enctype="multipart/form-data" method="post" action="{{route('EditUser')}}" class="form-horizontal">
-            @csrf
-            <div class="form-group">
-                <label for="inputName" class="col-sm-2 control-label">Name</label>
-                <div class="col-sm-10">
-                    <input type='text' class="form-control" id="inputName" value="{{Auth()->user()->name}}" name="name"
-                        required>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                </div>
-            </div>
-        </form>
+        
         <hr>
         <div class="box-header">
             <h3 class="box-title">Change Password</h3>

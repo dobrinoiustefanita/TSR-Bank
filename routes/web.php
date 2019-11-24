@@ -24,6 +24,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('register-form', 'UserController@RegisterForm')->name('RegisterForm');
 Route::post('register-register', 'UserController@UserRegister')->name('UserRegister');
 
+Route::get('create_clients', 'ClientController@getCreateClients')->name('CreateClients');
+Route::post('create_clients', 'ClientController@postCreateClients')->name('CreateClients');
+Route::get('edit_clients', 'ClientController@getEditClient')->name('EditClients');
+Route::post('edit_clients', 'ClientController@postEditClient')->name('EditClients');
+
 
 Route::prefix('admin')->group(function () {
     Route::prefix('user')->group(function () {
