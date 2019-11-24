@@ -83,7 +83,7 @@
 
         
         <div>
-            <button type="submit">Done</button>
+                <button type="button" class="btn btn-block btn-success btn-sm" style="width : inherit; margin-left:20px">Edit Client</button>
         </div>
      </form>
     

@@ -3,7 +3,7 @@
 <html style="height: auto; min-height: 100%;"><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Starter</title>
+    <title>TSR-Bank</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="{{ asset('adminlte/bower_components/bootstrap/dist/css/bootstrap.css') }}">
@@ -83,10 +83,10 @@
             <!-- Messages: style can be found in dropdown.less-->
             <li class="dropdown messages-menu">
               <!-- Menu toggle button -->
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              {{-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-envelope-o"></i>
                 <span class="label label-success">4</span>
-              </a>
+              </a> --}}
               <ul class="dropdown-menu">
                 <li class="header">You have 4 messages</li>
                 <li>
@@ -119,10 +119,10 @@
             <!-- Notifications Menu -->
             <li class="dropdown notifications-menu">
               <!-- Menu toggle button -->
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              {{-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-bell-o"></i>
                 <span class="label label-warning">10</span>
-              </a>
+              </a> --}}
               <ul class="dropdown-menu">
                 <li class="header">You have 10 notifications</li>
                 <li>
@@ -142,10 +142,10 @@
             <!-- Tasks Menu -->
             <li class="dropdown tasks-menu">
               <!-- Menu Toggle Button -->
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              {{-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-flag-o"></i>
                 <span class="label label-danger">9</span>
-              </a>
+              </a> --}}
               <ul class="dropdown-menu">
                 <li class="header">You have 9 tasks</li>
                 <li>
@@ -185,8 +185,17 @@
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                 <span class="hidden-xs">
                 <?php
-                    $str1 = Auth::user()->name ;
+                    if(Auth::user()->client->last()){
+                    $str1 = Auth::user()->client->last()->firstname ;
+                    $str2 = Auth::user()->client->last()->lastname ;
+
                     echo ucfirst($str1);
+                    echo("  ");
+                    echo ucfirst($str2);
+                    }
+                    else{
+                      echo ucfirst(Auth::user()->name);
+                    }
                 ?>
             </span>
               </a>
@@ -198,8 +207,17 @@
   
                     <p>
                     <?php
-                        $str1 = Auth::user()->name ;
-                        echo ucfirst($str1);
+                      if(Auth::user()->client->last()){
+                      $str1 = Auth::user()->client->last()->firstname ;
+                      $str2 = Auth::user()->client->last()->lastname ;
+
+                      echo ucfirst($str1);
+                      echo("  ");
+                      echo ucfirst($str2);
+                      }
+                      else{
+                        echo ucfirst(Auth::user()->name);
+                      }
                     ?>
                         <small>Member since Nov. 2012</small>
                     </p>
@@ -262,8 +280,17 @@
           
             <p>
             <?php
-                $str1 = Auth::user()->name ;
-                echo ucfirst($str1);
+            if(Auth::user()->client->last()){
+              $str1 = Auth::user()->client->last()->firstname ;
+              $str2 = Auth::user()->client->last()->lastname ;
+
+              echo ucfirst($str1);
+              echo("  ");
+              echo ucfirst($str2);
+            }
+            else{
+              echo ucfirst(Auth::user()->name);
+            }
             ?>
             </p>
             <!-- Status -->

@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     if (Auth()->user())
-        return redirect()->route('show-edit-user');
+        return redirect()->route('EditClients');
     else return redirect()->route('login');
 });
 
