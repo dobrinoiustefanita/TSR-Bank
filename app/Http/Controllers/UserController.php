@@ -30,6 +30,7 @@ class UserController extends Controller
     {
         return view('users.UserList');
     }
+
     public function UserRegister(UserRegisterRequest $request)
     {
         $validated = $request->validated();
@@ -62,6 +63,7 @@ class UserController extends Controller
         return view('users.edit')->with(['user' => $user]);
 
     }
+
     public function EditUser(Request $request)
     {
         $user = Auth()->user();
@@ -89,18 +91,20 @@ class UserController extends Controller
         
     }
 
-    public function AdminListUsers(Request $request){
+    public function AdminListUsers(Request $request)
+    {
+
         $users = User::all();
-
         return view('users.client')->with('users',$users);
-
     }
-    public function DeleteUser($id){
+
+    public function DeleteUser($id)
+    {
 
         $user = User::find($id);
-
         $user->delete();
 
         return redirect()->route('AdminGetUserList')->with('message', 'Client sters cu succes!');
     } 
+    
 }
