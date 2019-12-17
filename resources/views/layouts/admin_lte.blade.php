@@ -66,7 +66,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>A</b>LT</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>TSR-Bank</b></span>
+        <span class="logo-lg"><img src="{{ asset('images/apple-touch-icon-120x120.png') }}" style="width:27px; weight:27px">  <b>TSR-Bank</b></span>
       </a>
   
       <!-- Header Navbar -->
@@ -219,10 +219,10 @@
                         echo ucfirst(Auth::user()->name);
                       }
                     ?>
-                        <small>Member since Nov. 2012</small>
+                        <small>Member since Auth::user()->crated_at</small>
                     </p>
                 </li>
-                <!-- Menu Body -->
+                {{-- <!-- Menu Body -->
                 <li class="user-body">
                   <div class="row">
                     <div class="col-xs-4 text-center">
@@ -236,12 +236,12 @@
                     </div>
                   </div>
                   <!-- /.row -->
-                </li>
+                </li> --}}
                 
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-left">
-                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                    <a href="{{ URL::route('EditClients') }}" class="btn btn-default btn-flat">Profile</a>
                   </div>
                   <div class="pull-right">
                   <a href="{{ route('logout') }}"
@@ -258,9 +258,9 @@
               </ul>
             </li>
             <!-- Control Sidebar Toggle Button -->
-            <li>
+            {{-- <li>
               <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-            </li>
+            </li> --}}
           </ul>
         </div>
       </nav>
@@ -317,14 +317,19 @@
           
           <li> 
             <a href="{{ URL::route('EditClients') }}"><i class="fa fa-link"></i>
-            <span>Profil</span>
+            <span>Profile</span>
             </a>
           </li>
-          <li><a href="#"><i class="fa fa-file-text-o"></i> <span>Transaction History</span></a></li>
-          <li><a href="#"><i class="fa fa-usd"></i><span>Check Balance</span></a></li>
+          @if(count(App\Transaction::where('read','1')->where('to_user_id',Auth()->user()->id)->get())>=1)
+          <li><a href="{{route('ShowTransactionHistory')}}"><i class="fa fa-file-text-o"></i> <span>Transaction History</span><span><p style="color:blue; font-size:500">New Message</p>  </span></a>
+          </li>
+          @else
+          <li><a href="{{route('ShowTransactionHistory')}}"><i class="fa fa-file-text-o"></i> <span>Transaction History</span></a></li>
+          @endif
+          <li><a href="{{route('CheckBalance')}}"><i class="fa fa-usd"></i><span>Check Balance</span></a></li>
 
           @if(auth()->user()->isAdmin==1) 
-          <li id="side-menu-users-list"><a href="{{route('GetUserList')}}"><i class="fa fa-link"></i> <span>Trimite cerere de memberu</span></a></li>
+          <li id="side-menu-users-list"><a href="{{route('GetUserList')}}"><i class="fa fa-link"></i> <span>Invite a new member</span></a></li>
           <li id="side-menu-users-list"><a href="{{route('AdminGetUserList')}}"><i class="fa fa-link"></i> <span>Users List</span></a></li>
           @endif 
 
@@ -335,7 +340,7 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="#">Send Money</a></li>
+              <li><a href="{{route('show-send-money')}}">Send Money</a></li>
               <li><a href="#">Pay Bill</a></li>
               <li><a href="#">Check Exchange Rate</a></li>
               <li><a href="#">Exchange Money</a></li>
@@ -492,5 +497,5 @@
     
     
 
-  
+    @stack('custom-scripts')
   </body></html>

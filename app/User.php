@@ -41,4 +41,13 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Client');
     }
+
+    public function transactions_received()
+    {
+        return $this->belongsToMany('App\Transaction', 'feedback_touser');
+    }
+    public function tsansactions_sent()
+    {
+        return $this->belongsToMany('App\Transaction', 'feedback_fromuser')->orderBy('created_at');
+    }
 }

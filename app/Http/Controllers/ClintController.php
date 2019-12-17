@@ -71,6 +71,8 @@ class ClientController extends Controller
         
     }
 
+
+
     public function getDeleteClient($id) {
         // TODO - Limit access to the parent user
         $client = Client::find($id);

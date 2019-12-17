@@ -33,6 +33,7 @@ Route::post('edit_clients', 'ClientController@postEditClient')->name('EditClient
 Route::prefix('admin')->group(function () {
     Route::prefix('user')->group(function () {
         Route::post('sendmail', 'AdminController@CreateUser')->name('sendMail');
+        Route::post('deposit', 'UserController@DepositToAccount')->name('DepositToAccount');
         Route::get('list', 'UserController@getUserIndex')->name('GetUserList');
         Route::get('client', 'UserController@AdminListUsers')->name('AdminGetUserList');
         Route::get('admin_delete_client/{id}','UserController@DeleteUser')->name('DeleteUser');
@@ -42,5 +43,12 @@ Route::prefix('admin')->group(function () {
 Route::prefix('user')->group(function () {
     Route::post('changePassword', 'UserController@UserPassword')->name('ChangePassword');
     Route::get('edit-user', 'UserController@ShowEditUser')->name('show-edit-user');
+    Route::get('check-balance', 'UserController@CheckBalance')->name('CheckBalance');
     Route::post('edit', 'UserController@EditUser')->name('EditUser');
+});
+
+Route::prefix('user')->group(function () {
+    Route::get('show-send-money', 'TransactionController@ShowSendMoney')->name('show-send-money');
+    Route::get('show-transaction-history', 'TransactionController@ShowTransactionHistory')->name('ShowTransactionHistory');
+    Route::post('send-money', 'TransactionController@SendMoney')->name('SendMoney');
 });
