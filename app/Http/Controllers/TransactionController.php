@@ -27,7 +27,7 @@ class TransactionController extends Controller
     public function ShowTransactionHistory(Request $request)
     {
         $users = User::all();
-        $transactions = Transaction::all();
+        $transactions = Transaction::orderBy('created_at', 'DESC')->get();
         $transaction_to_user = Transaction::where('to_user_id',Auth()->user()->id)->get();
         for ($i = 0; $i < count($transaction_to_user) ; $i++) {
             if($transaction_to_user[$i]->read = '1'){
